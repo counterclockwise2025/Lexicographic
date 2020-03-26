@@ -1,6 +1,6 @@
 '''
 Samip Vaidh
-3/24/20
+3/31/20
 Knights Tour
 '''
 
@@ -43,3 +43,33 @@ for key in words_hash.keys():
     print ('{}: {}'.format(key, words_hash[key]))
 
 #place words into a binary tree
+#create a node for the BST
+class Node:
+    def __init__(self, key):
+        self.left = None
+        self.right = None
+        self.val = key
+
+#inseting a new node
+def insert(root, node):
+    if root is None:
+        root = node
+    else:
+        if root.val < node.val:
+            if root.right is None:
+                root.right = node
+            else:
+                insert(root.right, node)
+        else:
+            if root.left is None:
+                root.left = node
+            else:
+                insert(root.left, node)
+
+#traverse the tree in order
+def in_order(root):
+    if root:
+        in_order(root.left)
+        print(root.val)
+        in_order(root.right)
+
